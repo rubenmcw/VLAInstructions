@@ -1,0 +1,20 @@
+fake_vla_stub:
+  ros__parameters:
+    use_sim_time: true
+    goal_frame: "world"
+    hover_z: 0.12
+    # Each entry: name,color,shape,x,y,z   (x,y,z are object centers in goal_frame)
+    objects:
+      - "green_cube,green,cube,0.55,0.15,0.83"
+      - "green_cylinder,green,cylinder,0.65,-0.10,0.83"
+      - "yellow_cube,yellow,cube,0.70,0.12,0.83"
+      - "blue_cylinder,blue,cylinder,0.60,0.00,0.83"
+
+arm_executor:
+  ros__parameters:
+    use_sim_time: true
+    planning_group: "ur_manipulator"
+    pose_reference_frame: "world"
+    velocity_scaling: 0.2
+    acceleration_scaling: 0.2
+    planning_time_sec: 5.0

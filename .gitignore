@@ -1,0 +1,40 @@
+# --- ROS 2 / colcon workspace artifacts ---
+build/
+install/
+log/
+
+# --- rosbag2 recordings (often huge) ---
+*.db3
+*.db3-wal
+*.db3-shm
+*.mcap
+*.bag
+bags/
+
+# --- Gazebo / Ignition / gz-sim caches (only if they end up in-repo) ---
+.gazebo/
+.ignition/
+.gz/
+
+# --- VS Code / IDEs ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Python bytecode ---
+__pycache__/
+*.py[cod]
+
+# --- CMake / tooling artifacts ---
+compile_commands.json
+CMakeCache.txt
+CMakeFiles/
+
+# --- Editor swap / backups ---
+*~
+*.swp
+*.swo
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
