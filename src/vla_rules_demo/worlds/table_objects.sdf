@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.7">
   <world name="table_objects_world">
-    <!-- Light -->
     <light name="sun" type="directional">
       <cast_shadows>true</cast_shadows>
       <pose>0 0 10 0 0 0</pose>
@@ -10,9 +9,9 @@
       <direction>-0.5 0.1 -1</direction>
     </light>
 
-    <!-- Ground plane -->
     <model name="ground_plane">
       <static>true</static>
+      <pose>0 0 -0.8 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -37,11 +36,9 @@
       </link>
     </model>
 
-    <!-- Table (static box) -->
     <model name="table">
       <static>true</static>
-      <!-- Place table in front of and slightly to the side of the robot -->
-      <pose>0.90 -0.45 0.40 0 0 0</pose>
+      <pose>-0.0077 0.9695 -0.40 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -60,12 +57,9 @@
       </link>
     </model>
 
-    <!-- Objects on table top (z ~ table top = 0.8) -->
-
-    <!-- Green cube -->
     <model name="green_cube">
       <static>true</static>
-      <pose>0.85 -0.30 0.83 0 0 0</pose>
+      <pose>-0.0577 0.9195 0.03 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry><box><size>0.05 0.05 0.05</size></box></geometry>
@@ -77,10 +71,9 @@
       </link>
     </model>
 
-    <!-- Green cylinder -->
     <model name="green_cylinder">
       <static>true</static>
-      <pose>0.95 -0.55 0.83 0 0 0</pose>
+      <pose>0.0423 0.9195 0.03 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry><cylinder><radius>0.025</radius><length>0.06</length></cylinder></geometry>
@@ -92,10 +85,9 @@
       </link>
     </model>
 
-    <!-- Yellow cube -->
     <model name="yellow_cube">
       <static>true</static>
-      <pose>1.00 -0.33 0.83 0 0 0</pose>
+      <pose>-0.0577 1.0195 0.03 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry><box><size>0.05 0.05 0.05</size></box></geometry>
@@ -107,10 +99,9 @@
       </link>
     </model>
 
-    <!-- Blue cylinder -->
     <model name="blue_cylinder">
       <static>true</static>
-      <pose>0.90 -0.45 0.83 0 0 0</pose>
+      <pose>0.0423 1.0195 0.03 0 0 0</pose>
       <link name="link">
         <visual name="visual">
           <geometry><cylinder><radius>0.025</radius><length>0.06</length></cylinder></geometry>

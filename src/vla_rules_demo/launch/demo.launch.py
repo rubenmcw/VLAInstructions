@@ -17,7 +17,7 @@ def generate_launch_description():
     sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(ur_sim_launch),
         launch_arguments={
-            "ur_type": "ur5e",
+            "ur_type": "ur10e",
             "world_file": world_file,
             
         }.items(),
