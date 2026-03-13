@@ -1,12 +1,20 @@
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from launch.substitutions import PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 def generate_launch_description():
+    robot_x = LaunchConfiguration("robot_x")
+    robot_y = LaunchConfiguration("robot_y")
+    robot_z = LaunchConfiguration("robot_z")
+    robot_roll = LaunchConfiguration("robot_roll")
+    robot_pitch = LaunchConfiguration("robot_pitch")
+    robot_yaw = LaunchConfiguration("robot_yaw")
+
     pkg_share = FindPackageShare("vla_rules_demo")
     params_file = PathJoinSubstitution([pkg_share, "config", "demo_params.yaml"])
     world_file = PathJoinSubstitution([pkg_share, "worlds", "table_objects.sdf"])
@@ -19,7 +27,12 @@ def generate_launch_description():
         launch_arguments={
             "ur_type": "ur5e",
             "world_file": world_file,
-            
+            "x": robot_x,
+            "y": robot_y,
+            "z": robot_z,
+            "roll": robot_roll,
+            "pitch": robot_pitch,
+            "yaw": robot_yaw,
         }.items(),
     )
 
@@ -39,4 +52,15 @@ def generate_launch_description():
         parameters=[params_file],
     )
 
-    return LaunchDescription([sim, fake_vla, executor])
+    return LaunchDescription([
+        # Default spawn puts the base slightly back from origin, facing the table at +x.
+        DeclareLaunchArgument("robot_x", default_value="-0.2"),
+        DeclareLaunchArgument("robot_y", default_value="0.0"),
+        DeclareLaunchArgument("robot_z", default_value="0.0"),
+        DeclareLaunchArgument("robot_roll", default_value="0.0"),
+        DeclareLaunchArgument("robot_pitch", default_value="0.0"),
+        DeclareLaunchArgument("robot_yaw", default_value="0.0"),
+        sim,
+        fake_vla,
+        executor,
+    ])
